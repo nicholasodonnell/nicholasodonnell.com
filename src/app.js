@@ -1,7 +1,8 @@
-import { BREAKPOINTS, COLORS, ZINDEX } from 'constants'
-import { Content, Hero, Particles } from 'containers'
+import { BREAKPOINTS, COLORS } from 'constants'
 import React from 'react'
-import styled, { createGlobalStyle } from 'styled-components'
+import { StateProvider } from 'state'
+import { createGlobalStyle } from 'styled-components'
+import Layout from './layout'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -32,23 +33,9 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const StyledApp = styled.div`
-  display: flex;
-  flex: 1;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-  width: 100vw;
-`
-
 export default () => (
-  <>
-    <GlobalStyle />
-    <StyledApp>
-      <Content>
-        <Hero />
-      </Content>
-      <Particles />
-    </StyledApp>
-  </>
+  <StateProvider>
+      <GlobalStyle />
+    <Layout />
+  </StateProvider>
 )

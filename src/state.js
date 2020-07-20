@@ -2,31 +2,23 @@ import React, { createContext, useContext, useReducer } from 'react'
 import reducer from 'reducer'
 
 const initialState = {
-
-}
-
-const augmentDispatch = (dispatch, getState) => async (action) => {
-  if (action instanceof Function) {
-    await action(augmentDispatch(dispatch, getState), getState)
-  } else {
-    await dispatch(action)
+  layout: {
+    height: 0,
+    width: 0
   }
 }
 
 export const StateContext = createContext()
 
-export const StateProvider = ({ children }) => {
+export const StateProvider = ({children}) => {
   const [state, dispatch] = useReducer(reducer, initialState)
-
-  const getState = () => state
 
   return (
     <StateContext.Provider
       value={{
         ...state,
-        dispatch: augmentDispatch(dispatch, getState)
-      }}
-    >
+        dispatch
+      }}>
       {children}
     </StateContext.Provider>
   )

@@ -4,7 +4,7 @@ import {
 import React from 'react'
 import styled from 'styled-components'
 
-const Container = styled.a`
+const Button = styled.a`
   border: 1px solid ${COLORS.WHITE};
   color: ${COLORS.WHITE};
   font-family: ${FONT_FAMILIES.SANS_SERIF};
@@ -18,7 +18,6 @@ const Container = styled.a`
   text-transform: uppercase;
   transition: border-color ${ANIMATIONS.SHORT} ease-in-out,
     color ${ANIMATIONS.SHORT} ease-in-out;
-
 
   &:before {
     content: '';
@@ -47,11 +46,11 @@ const Container = styled.a`
 export default ({
   children, className, href, target
 }) => (
-  <Container
+  <Button
     className={className}
     href={href}
     target={target}
   >
     {children}
-  </Container>
+  </Button>
 )
