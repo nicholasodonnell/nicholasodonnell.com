@@ -12,4 +12,4 @@ echo "synching /public directory"
 mv -f $GITHUB_WORKSPACE/public/* /gh-pages
 
 # push gh-pages branch
-sh -c "cd /gh-pages && git add . && git commit -m \"Publish $GITHUB_SHA\" && git push https://$1@github.com/nicholasodonnell/nicholasodonnell.com.git gh-pages --force"
+sh -c "cd /gh-pages && git add . && git commit --allow-empty -m \"Publish $GITHUB_SHA\" && git push --force https://$1@github.com/nicholasodonnell/nicholasodonnell.com.git gh-pages"
