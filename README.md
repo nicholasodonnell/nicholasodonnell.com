@@ -8,7 +8,7 @@ My personal website located at **https://nicholasodonnell.com** that also double
 
 ## Installation
 
-1. Install the required dependencies by running `yarn install`
+Install the required dependencies by running `yarn install`.
 
 ## Usage
 
@@ -21,3 +21,7 @@ To start the development server with hot reloading:
 ```
 yarn run dev
 ```
+
+## Deploy
+
+Commits to the *master* branch with be automatically deployed to [gh-pages](https://github.com/nicholasodonnell/nicholasodonnell.com/tree/gh-pages) branch with a [GitHub action](https://github.com/nicholasodonnell/nicholasodonnell.com/actions).
