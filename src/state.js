@@ -3,8 +3,8 @@ import reducer from 'reducer'
 
 const initialState = {
   layout: {
-    height: 0,
-    width: 0
+    height: window.innerHeight,
+    width: window.innerWidth
   }
 }
 

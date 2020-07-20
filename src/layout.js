@@ -16,15 +16,10 @@ const StyledApp = styled.div`
 export default () => {
   const { dispatch, layout } = withState()
 
-  console.log('layout', layout)
-
-  useEffect(
-    () => dispatch(setLayout({
-      height: window.innerHeight,
-      width: window.innerWidth
-    })),
-    []
-  )
+  useEffect(() => window.addEventListener('resize', () => dispatch(setLayout({
+    height: window.innerHeight,
+    width: window.innerWidth
+  }))), [])
 
   return (
     <StyledApp height={layout.height}>

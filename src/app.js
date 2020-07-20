@@ -35,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
 
 export default () => (
   <StateProvider>
-      <GlobalStyle />
+    <GlobalStyle />
     <Layout />
   </StateProvider>
 )

@@ -1,6 +1,7 @@
 import { ZINDEX } from 'constants'
 import React from 'react'
 import Particles from 'react-particles-js'
+import { withState } from 'state'
 import styled from 'styled-components'
 
 const StyledParticles = styled(Particles)`
@@ -12,25 +13,31 @@ const StyledParticles = styled(Particles)`
   z-index: ${ZINDEX.PARTICLES};
 `
 
-export default () => (
-  <StyledParticles
-    params={{
-      particles: {
-        number: {
-          value: 45
+export default () => {
+  const { layout } = withState()
+
+  return (
+    <StyledParticles
+      height={layout.height}
+      params={{
+        particles: {
+          number: {
+            value: 45
+          },
+          size: {
+            value: 1
+          }
         },
-        size: {
-          value: 1
-        }
-      },
-      interactivity: {
-        events: {
-          onhover: {
-            enable: true,
-            mode: 'repulse'
+        interactivity: {
+          events: {
+            onhover: {
+              enable: true,
+              mode: 'repulse'
+            }
           }
         }
-      }
-    }}
-  />
-)
+      }}
+      width={layout.width}
+    />
+  )
+}
