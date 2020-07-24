@@ -1,13 +1,16 @@
 import { setLayout } from 'actions'
-import { Content, Hero, Particles } from 'containers'
+import { Hero, Particles, SpaceInvaders } from 'containers'
 import React, { useEffect } from 'react'
 import { withState } from 'state'
 import styled from 'styled-components'
 
 const StyledApp = styled.div`
+  align-items: center;
   display: flex;
+  flex-direction: column;
   flex: 1;
   height: ${({ height }) => height}px;
+  justify-content: center;
   overflow: hidden;
   position: relative;
   width: 100vw;
@@ -23,9 +26,8 @@ export default () => {
 
   return (
     <StyledApp height={layout.height}>
-      <Content>
-        <Hero />
-      </Content>
+      <Hero />
+      <SpaceInvaders />
       <Particles />
     </StyledApp>
   )

@@ -16,6 +16,14 @@ module.exports = {
         query: {
           presets: ['@babel/preset-env', '@babel/react']
         }
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'assets'
+        }
       }
     ]
   },
@@ -32,6 +40,7 @@ module.exports = {
   resolve: {
     alias: {
       actions: path.resolve(__dirname, 'src/actions/'),
+      assets: path.resolve(__dirname, 'src/assets/'),
       components: path.resolve(__dirname, 'src/components/'),
       containers: path.resolve(__dirname, 'src/containers/'),
       constants: path.resolve(__dirname, 'src/constants.js'),

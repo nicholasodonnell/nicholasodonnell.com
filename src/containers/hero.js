@@ -1,9 +1,21 @@
 import {
-  COLORS, FONT_FAMILIES, FONT_SIZES, FONT_WEIGHTS
+  ANIMATIONS, COLORS, FONT_FAMILIES, FONT_SIZES, FONT_WEIGHTS, ZINDEX
 } from 'constants'
-import { Button, Container } from 'components'
+import { Button } from 'components'
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const fadeInDown = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-2%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`
 
 const CTAButtons = styled.div`
   display: flex;
@@ -24,14 +36,18 @@ const Highlight = styled.span`
   font-weight: ${FONT_WEIGHTS.SEMI_BOLD};
 `
 
-const StyledContainer = styled(Container)`
+const Hero = styled.section`
   align-items: center;
+  animation: ${fadeInDown} ${ANIMATIONS.LONG} ease ${ANIMATIONS.SHORT} 1 forwards;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
+  opacity: 0;
+  transform: translateY(-2%);
+  z-index: ${ZINDEX.HERO};
 `
 
 export default () => (
-  <StyledContainer>
+  <Hero>
     <Headline>
       Hello, I&apos;m
       {' '}
@@ -41,18 +57,12 @@ export default () => (
       I&apos;m a full-stack software engineer.
     </Headline>
     <CTAButtons>
-      <Button
-        href="https://github.com/nicholasodonnell"
-        target="_blank"
-      >
+      <Button href="https://github.com/nicholasodonnell" target="_blank">
         Explore Work
       </Button>
-      <Button
-        href="https://www.linkedin.com/in/nicholas-odonnell"
-        target="_blank"
-      >
+      <Button href="https://www.linkedin.com/in/nicholas-odonnell" target="_blank">
         View Profile
       </Button>
     </CTAButtons>
-  </StyledContainer>
+  </Hero>
 )

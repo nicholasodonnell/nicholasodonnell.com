@@ -1,5 +1,9 @@
 import {
-  ANIMATIONS, COLORS, FONT_FAMILIES, FONT_SIZES, FONT_WEIGHTS
+  ANIMATIONS,
+  COLORS,
+  FONT_FAMILIES,
+  FONT_SIZES,
+  FONT_WEIGHTS
 } from 'constants'
 import React from 'react'
 import styled from 'styled-components'
@@ -20,7 +24,7 @@ const Button = styled.a`
     color ${ANIMATIONS.SHORT} ease-in-out;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 0;
@@ -46,11 +50,7 @@ const Button = styled.a`
 export default ({
   children, className, href, target
 }) => (
-  <Button
-    className={className}
-    href={href}
-    target={target}
-  >
+  <Button className={className} href={href} target={target}>
     {children}
   </Button>
 )

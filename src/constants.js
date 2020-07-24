@@ -32,14 +32,10 @@ export const FONT_WEIGHTS = {
   SEMI_BOLD: 600
 }
 
-export const GUTTER = '1rem'
-
-export const LAYOUT = {
-  MAX_WIDTH: '1200px',
-  WIDTH: `calc(100vw - ${GUTTER})`
-}
+export const PARTICLE_PER_SQUARE_PIXELS = 45000
 
 export const ZINDEX = {
   PARTICLES: 1,
-  CONTENT: 2
+  SPACE_INVADERS: 2,
+  HERO: 3
 }
