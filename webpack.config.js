@@ -12,10 +12,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['@babel/preset-env', '@babel/react']
-        }
+        loader: 'babel-loader'
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
@@ -44,8 +41,10 @@ module.exports = {
       components: path.resolve(__dirname, 'src/components/'),
       containers: path.resolve(__dirname, 'src/containers/'),
       constants: path.resolve(__dirname, 'src/constants.js'),
+      hooks: path.resolve(__dirname, 'src/hooks/'),
       reducer: path.resolve(__dirname, 'src/reducer.js'),
-      state: path.resolve(__dirname, 'src/state.js')
+      state: path.resolve(__dirname, 'src/state.js'),
+      utils: path.resolve(__dirname, 'src/utils/')
     }
   }
 }

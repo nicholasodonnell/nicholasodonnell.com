@@ -1,39 +1,41 @@
 import { ship } from 'assets'
-import { ANIMATIONS } from 'constants'
-import React, { useEffect, useRef, useState } from 'react'
+import { TIMINGS } from 'constants'
+import React from 'react'
 import styled from 'styled-components'
+
+const SHIP_ASPECT_RATIO = 0.771484375
+const SHIP_WIDTH = 2.5
 
 const Ship = styled.image`
   cursor: pointer;
-  height: auto;
+  height: ${SHIP_WIDTH * SHIP_ASPECT_RATIO}rem;
+  opacity: 0.3;
   pointer-events: bounding-box;
-  transform-box: fill-box;
-  transform-origin: center center;
-  transition: transform ${ANIMATIONS.SHORT} ease-in-out;
-  width: 3rem;
+  transition: opacity ${TIMINGS.SHORT} ease-in-out;
+  width: ${SHIP_WIDTH}rem;
 
   &:hover {
-    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  & {
+    opacity: ${({ active }) => active && '1'};
   }
 `
 
-export default ({ innerRef, x, y }) =>
-// const element = useRef(null)
-// const [boundingClientRect, setBoundingClientRect] = useState({})
-
-// useEffect(() => {
-//   setBoundingClientRect(element?.current?.getBoundingClientRect())
-// }, [])
-
-// console.log('boundingClientRect', boundingClientRect)
-
-  (
-    <Ship
-      href={ship}
-      onClick={() => console.log('click')}
-      onMouseOver={() => console.log('mouse over')}
-      ref={innerRef}
-      x={x}
-      y={y}
-    />
-  )
+export default ({
+  active,
+  innerRef,
+  onClick,
+  x,
+  y
+}) => (
+  <Ship
+    active={active}
+    href={ship}
+    onClick={onClick}
+    ref={innerRef}
+    x={x}
+    y={y}
+  />
+)

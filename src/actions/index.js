@@ -1,2 +1,6 @@
+export setCanvas from './set-canvas'
+export setGame from './set-game'
 export setLayout from './set-layout'
+export setShip from './set-ship'
+export * from './thunks'
 export * as TYPES from './types'

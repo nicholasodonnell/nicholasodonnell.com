@@ -1,9 +1,9 @@
 import {
-  ANIMATIONS,
   COLORS,
   FONT_FAMILIES,
   FONT_SIZES,
-  FONT_WEIGHTS
+  FONT_WEIGHTS,
+  TIMINGS
 } from 'constants'
 import React from 'react'
 import styled from 'styled-components'
@@ -20,8 +20,8 @@ const Button = styled.a`
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
-  transition: border-color ${ANIMATIONS.SHORT} ease-in-out,
-    color ${ANIMATIONS.SHORT} ease-in-out;
+  transition: border-color ${TIMINGS.SHORT} ease-in-out,
+    color ${TIMINGS.SHORT} ease-in-out;
 
   &:before {
     content: "";
@@ -32,8 +32,8 @@ const Button = styled.a`
     height: 1px;
     background-color: ${COLORS.WHITE};
     transform: translateX(-50%) translateY(-50%);
-    transition: background-color ${ANIMATIONS.SHORT} ease-in-out,
-      transform ${ANIMATIONS.SHORT} ease-in-out;
+    transition: background-color ${TIMINGS.SHORT} ease-in-out,
+      transform ${TIMINGS.SHORT} ease-in-out;
   }
 
   &:hover {

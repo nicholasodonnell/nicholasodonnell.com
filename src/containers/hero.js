@@ -1,21 +1,16 @@
 import {
-  ANIMATIONS, COLORS, FONT_FAMILIES, FONT_SIZES, FONT_WEIGHTS, ZINDEX
+  COLORS,
+  FONT_FAMILIES,
+  FONT_SIZES,
+  FONT_WEIGHTS,
+  TIMINGS,
+  ZINDEX
 } from 'constants'
 import { Button } from 'components'
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
-
-const fadeInDown = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-2%);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`
+import { withState } from 'state'
+import styled, { css } from 'styled-components'
+import { animations } from 'utils'
 
 const CTAButtons = styled.div`
   display: flex;
@@ -38,31 +33,40 @@ const Highlight = styled.span`
 
 const Hero = styled.section`
   align-items: center;
-  animation: ${fadeInDown} ${ANIMATIONS.LONG} ease ${ANIMATIONS.SHORT} 1 forwards;
+  animation: ${animations.fadeInDown} ${TIMINGS.LONG} ease ${TIMINGS.SHORT} 1 forwards;
   display: flex;
   flex-direction: column;
   opacity: 0;
   transform: translateY(-2%);
   z-index: ${ZINDEX.HERO};
+
+  & {
+    animation: ${({ hide }) => hide && css`${animations.fadeOutUp} ${TIMINGS.MEDIUM} ease 0s 1 forwards`};
+    pointer-events: ${({ hide }) => hide && 'none'};
+  }
 `
 
-export default () => (
-  <Hero>
-    <Headline>
-      Hello, I&apos;m
-      {' '}
-      <Highlight>Nicholas O&apos;Donnell</Highlight>
-      .
-      <br />
-      I&apos;m a full-stack software engineer.
-    </Headline>
-    <CTAButtons>
-      <Button href="https://github.com/nicholasodonnell" target="_blank">
-        Explore Work
-      </Button>
-      <Button href="https://www.linkedin.com/in/nicholas-odonnell" target="_blank">
-        View Profile
-      </Button>
-    </CTAButtons>
-  </Hero>
-)
+export default () => {
+  const { game } = withState()
+
+  return (
+    <Hero hide={game.initialized}>
+      <Headline>
+        Hello, I&apos;m
+        {' '}
+        <Highlight>Nicholas O&apos;Donnell</Highlight>
+        .
+        <br />
+        I&apos;m a full-stack software engineer.
+      </Headline>
+      <CTAButtons>
+        <Button href="https://github.com/nicholasodonnell" target="_blank">
+          Explore Work
+        </Button>
+        <Button href="https://www.linkedin.com/in/nicholas-odonnell" target="_blank">
+          View Profile
+        </Button>
+      </CTAButtons>
+    </Hero>
+  )
+}
