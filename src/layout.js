@@ -39,7 +39,8 @@ const StyledApp = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  height: 100vh;
+  max-height: 100vh;
+  height: ${({ height }) => height}px;
   justify-content: center;
   overflow: hidden;
   padding: 1rem;
@@ -48,7 +49,7 @@ const StyledApp = styled.div`
 `
 
 export default () => {
-  const { dispatch } = withState()
+  const { dispatch, layout } = withState()
 
   useEffect(() => window.addEventListener('resize', () => dispatch(setLayout({
     height: window.innerHeight,
@@ -58,7 +59,7 @@ export default () => {
   return (
     <>
       <GlobalStyle />
-      <StyledApp>
+      <StyledApp height={layout.height}>
         <Hero />
         <SpaceInvaders />
         <Particles />

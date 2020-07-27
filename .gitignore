@@ -14,3 +14,4 @@ yarn-error.log*
 # production
 /public/app.js
 /public/index.html
+/public/assets
