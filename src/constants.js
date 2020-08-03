@@ -34,11 +34,47 @@ export const FONT_WEIGHTS = {
   SEMI_BOLD: 600
 }
 
+export const GAME_DISPATCH_THROTTLE = 150
+
+// 60fps
+export const GAME_UPDATE_EVERY = 1000 / 60
+
+export const INITIAL_STATE = {
+  canvas: {
+    height: 0,
+    width: 0
+  },
+  game: {
+    initialized: false,
+    playing: false
+  },
+  layout: {
+    height: window.innerHeight,
+    width: window.innerWidth
+  },
+  missles: [],
+  ship: {
+    height: 0,
+    width: 0,
+    x: 0,
+    y: 0
+  }
+}
+
+export const MISSLE_PIXELS_HEIGHT = 20
+
+export const MISSLE_PIXELS_WIDTH = 4
+
+export const MISSLE_STEP_TIMING = 25
+
 export const PARTICLE_PER_SQUARE_PIXELS = 40000
+
+export const SHIP_WIDTH = '3.125rem'
 
 export const SPRITE_MOVE_DISTANCE = 30
 
 export const TIMINGS = {
+  FAST: '100ms',
   SHORT: '200ms',
   MEDIUM: '500ms',
   LONG: '1000ms',

@@ -39,9 +39,9 @@ const StyledApp = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  max-height: 100vh;
   height: ${({ height }) => height}px;
   justify-content: center;
+  max-height: 100vh;
   overflow: hidden;
   padding: 1rem;
   position: relative;

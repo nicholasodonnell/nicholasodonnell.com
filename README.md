@@ -1,6 +1,6 @@
 <img src="logo/logo.png" />
 
-My personal website located at https://nicholasodonnell.com that doubles as a game of Space Invaders.
+My personal website located at https://nicholasodonnell.com that doubles as a game of Space Invaders 👾.
 
 ### Requirements
 

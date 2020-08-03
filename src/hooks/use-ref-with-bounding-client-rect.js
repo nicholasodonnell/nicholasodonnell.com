@@ -7,7 +7,7 @@ export default fn => {
     if (ref) {
       fn(ref.getBoundingClientRect())
     }
-  }, [ref?.getBoundingClientRect()?.height, ref?.getBoundingClientRect()?.width])
+  }, [ref])
 
   return setRef
 }

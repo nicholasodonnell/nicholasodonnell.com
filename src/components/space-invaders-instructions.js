@@ -19,6 +19,7 @@ const Intro = styled.h2`
   color: ${COLORS.WHITE};
   font-family: ${FONT_FAMILIES.MONO};
   font-size: ${FONT_SIZES.EXTRA_LARGE};
+  line-height: 1.2;
   text-transform: uppercase;
   text-align: center;
 `
@@ -41,6 +42,7 @@ const KeyboardButton = styled.span`
     inset 0 -2px 0 #aaaaaa,
     inset 0px 1px 1px -1px #fff,
     0px 1px 1px 0px #7a7a7a;
+  color: ${COLORS.RED};
   padding: 0 0.625rem;
   background-color: ${COLORS.WHITE};
   border-radius: 0.3rem;
@@ -50,32 +52,37 @@ const KeyboardButton = styled.span`
   }
 `
 
+const Title = styled.span`
+  color: ${COLORS.RED};
+  font-size: 130%;
+`
+
 export default ({ active }) => (
   <SpaceInvadersInstructions active={active}>
     <Intro>
-      Space Invaders
+      <Title>Space Invaders</Title>
       <br />
       Press
       {' '}
       <KeyboardButton pulse>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.41L5.83 13H21V7z" /></svg>
+        Enter
       </KeyboardButton>
       {' '}
       to Play!
     </Intro>
     <Instructions>
       <Instruction>
-        <KeyboardButton><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z" /></svg></KeyboardButton>
+        <KeyboardButton>Left</KeyboardButton>
         {' '}
         Move Left
       </Instruction>
       <Instruction>
-        <KeyboardButton><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" /></svg></KeyboardButton>
+        <KeyboardButton>Right</KeyboardButton>
         {' '}
         Move Right
       </Instruction>
       <Instruction>
-        <KeyboardButton><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18 9v4H6V9H4v6h16V9z" /></svg></KeyboardButton>
+        <KeyboardButton>Space</KeyboardButton>
         {' '}
         Shoot
       </Instruction>
