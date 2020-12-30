@@ -1,3 +1,7 @@
-export Hero from './hero'
-export Particles from './particles'
-export SpaceInvaders from './space-invaders'
+import Hero from './hero'
+import Particles from './particles'
+
+export {
+  Hero,
+  Particles,
+}

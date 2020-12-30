@@ -1,7 +1,7 @@
-export addMissle from './add-missle'
-export setCanvas from './set-canvas'
-export setGame from './set-game'
-export setLayout from './set-layout'
-export setMissles from './set-missles'
-export setShip from './set-ship'
-export * as TYPES from './types'
+import setLayout from './set-layout'
+import * as TYPES from './types'
+
+export {
+  setLayout,
+  TYPES,
+}

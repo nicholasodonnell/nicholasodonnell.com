@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   devServer: {
     inline: true,
-    port: 3000
+    port: 3000,
   },
   entry: './src/index.js',
   module: {
@@ -12,39 +12,26 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
-          outputPath: 'assets'
-        }
-      }
-    ]
+          outputPath: 'assets',
+        },
+      },
+    ],
   },
   output: {
     path: path.join(__dirname, '/public'),
-    filename: 'app.js'
+    filename: 'app.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      favicon: './public/favicon.ico'
-    })
+      favicon: './public/favicon.ico',
+    }),
   ],
-  resolve: {
-    alias: {
-      actions: path.resolve(__dirname, 'src/actions/'),
-      assets: path.resolve(__dirname, 'src/assets/'),
-      components: path.resolve(__dirname, 'src/components/'),
-      containers: path.resolve(__dirname, 'src/containers/'),
-      constants: path.resolve(__dirname, 'src/constants.js'),
-      hooks: path.resolve(__dirname, 'src/hooks/'),
-      reducer: path.resolve(__dirname, 'src/reducer.js'),
-      state: path.resolve(__dirname, 'src/state.js'),
-      utils: path.resolve(__dirname, 'src/utils/')
-    }
-  }
 }

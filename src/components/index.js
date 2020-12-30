@@ -1,4 +1,5 @@
-export Button from './button'
-export Missle from './missle'
-export Ship from './ship'
-export SpaceInvadersInstructions from './space-invaders-instructions'
+import Button from './button'
+
+export {
+  Button,
+}

@@ -1,1 +1,5 @@
-export * as animations from './animations'
+import * as animations from './animations'
+
+export {
+  animations,
+}

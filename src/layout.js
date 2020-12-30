@@ -1,9 +1,10 @@
-import { setLayout } from 'actions'
-import { BREAKPOINTS, COLORS } from 'constants'
-import { Hero, Particles, SpaceInvaders } from 'containers'
 import React, { useEffect } from 'react'
-import { withState } from 'state'
 import styled, { createGlobalStyle } from 'styled-components'
+
+import { setLayout } from './actions'
+import { BREAKPOINTS, COLORS } from './constants'
+import { Hero, Particles } from './containers'
+import { withState } from './state'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -14,21 +15,17 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     background: ${COLORS.DARK_BLUE};
-    font-size: 9px;
+    font-size: 13px;
 
     @media (min-width: ${BREAKPOINTS.SMALL}) {
-      font-size: 10px;
-    }
-
-    @media (min-width: ${BREAKPOINTS.MEDIUM}) {
-      font-size: 12px;
-    }
-
-    @media (min-width: ${BREAKPOINTS.LARGE}) {
       font-size: 14px;
     }
 
-    @media (min-width: ${BREAKPOINTS.EXTRA_LARGE}) {
+    @media (min-width: ${BREAKPOINTS.MEDIUM}) {
+      font-size: 15px;
+    }
+
+    @media (min-width: ${BREAKPOINTS.LARGE}) {
       font-size: 16px;
     }
   }
@@ -53,7 +50,7 @@ export default () => {
 
   useEffect(() => window.addEventListener('resize', () => dispatch(setLayout({
     height: window.innerHeight,
-    width: window.innerWidth
+    width: window.innerWidth,
   }))), [])
 
   return (
@@ -61,7 +58,6 @@ export default () => {
       <GlobalStyle />
       <StyledApp height={layout.height}>
         <Hero />
-        <SpaceInvaders />
         <Particles />
       </StyledApp>
     </>

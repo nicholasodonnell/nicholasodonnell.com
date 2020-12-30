@@ -1,16 +1,16 @@
+import React from 'react'
+import styled, { css } from 'styled-components'
+
+import { Button } from '../components'
 import {
   COLORS,
   FONT_FAMILIES,
   FONT_SIZES,
   FONT_WEIGHTS,
   TIMINGS,
-  ZINDEX
-} from 'constants'
-import { Button } from 'components'
-import React from 'react'
-import { withState } from 'state'
-import styled, { css } from 'styled-components'
-import { animations } from 'utils'
+  ZINDEX,
+} from '../constants'
+import { animations } from '../utils'
 
 const CTAButtons = styled.div`
   display: flex;
@@ -39,34 +39,25 @@ const Hero = styled.section`
   opacity: 0;
   transform: translateY(-2%);
   z-index: ${ZINDEX.HERO};
-
-  & {
-    animation: ${({ hide }) => hide && css`${animations.fadeOutUp} ${TIMINGS.MEDIUM} ease 0s 1 forwards`};
-    pointer-events: ${({ hide }) => hide && 'none'};
-  }
 `
 
-export default () => {
-  const { game } = withState()
-
-  return (
-    <Hero hide={game.initialized}>
-      <Headline>
-        Hello, I&apos;m
-        {' '}
-        <Highlight>Nicholas O&apos;Donnell</Highlight>
-        .
-        <br />
-        I&apos;m a full-stack software engineer.
-      </Headline>
-      <CTAButtons>
-        <Button href="https://github.com/nicholasodonnell" target="_blank">
-          Explore Work
-        </Button>
-        <Button href="https://www.linkedin.com/in/nicholas-odonnell" target="_blank">
-          View Profile
-        </Button>
-      </CTAButtons>
-    </Hero>
-  )
-}
+export default () => (
+  <Hero>
+    <Headline>
+      Hello, I&apos;m
+      {' '}
+      <Highlight>Nicholas O&apos;Donnell</Highlight>
+      .
+      <br />
+      I&apos;m a full-stack software engineer.
+    </Headline>
+    <CTAButtons>
+      <Button href="https://github.com/nicholasodonnell" target="_blank" rel="noopener noreferrer">
+        Explore Work
+      </Button>
+      <Button href="https://www.linkedin.com/in/nicholas-odonnell" target="_blank" rel="noopener noreferrer">
+        View Profile
+      </Button>
+    </CTAButtons>
+  </Hero>
+)

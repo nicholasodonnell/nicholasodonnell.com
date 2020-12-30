@@ -4,4 +4,4 @@
 yarn install --pure-lockfile --cwd $GITHUB_WORKSPACE
 
 # build production assets
-yarn --cwd $GITHUB_WORKSPACE run build
+yarn --cwd $GITHUB_WORKSPACE build

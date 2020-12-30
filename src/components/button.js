@@ -1,12 +1,13 @@
+import React from 'react'
+import styled from 'styled-components'
+
 import {
   COLORS,
   FONT_FAMILIES,
   FONT_SIZES,
   FONT_WEIGHTS,
-  TIMINGS
-} from 'constants'
-import React from 'react'
-import styled from 'styled-components'
+  TIMINGS,
+} from '../constants'
 
 const Button = styled.a`
   border: 1px solid ${COLORS.WHITE};
@@ -48,7 +49,10 @@ const Button = styled.a`
 `
 
 export default ({
-  children, className, href, target
+  children,
+  className,
+  href,
+  target,
 }) => (
   <Button className={className} href={href} target={target}>
     {children}
