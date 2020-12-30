@@ -9,7 +9,7 @@ git clone --branch gh-pages https://$1@github.com/$GITHUB_REPOSITORY.git /gh-pag
 
 # update gh-pages branch with changes
 echo "synching /public directory"
-find /gh-pages -type f ! -name CNAME -delete
+find /gh-pages -type f ! -name "CNAME" ! -path "*.git/*" -delete
 mv -f $GITHUB_WORKSPACE/public/* /gh-pages
 
 # set working dir
