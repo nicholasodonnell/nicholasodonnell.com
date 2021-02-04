@@ -3,7 +3,11 @@ import styled, { createGlobalStyle } from 'styled-components'
 
 import { setLayout } from './actions'
 import { BREAKPOINTS, COLORS } from './constants'
-import { Hero, Particles } from './containers'
+import {
+  Buttons,
+  Hero,
+  Particles,
+} from './containers'
 import { withState } from './state'
 
 const GlobalStyle = createGlobalStyle`
@@ -40,7 +44,7 @@ const StyledApp = styled.div`
   justify-content: center;
   max-height: 100vh;
   overflow: hidden;
-  padding: 1rem;
+  padding: 15px;
   position: relative;
   width: 100vw;
 `
@@ -58,6 +62,7 @@ export default () => {
       <GlobalStyle />
       <StyledApp height={layout.height}>
         <Hero />
+        <Buttons />
         <Particles />
       </StyledApp>
     </>

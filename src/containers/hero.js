@@ -1,7 +1,7 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-import { Button } from '../components'
+import { Glitch } from '../components'
 import {
   COLORS,
   FONT_FAMILIES,
@@ -12,23 +12,13 @@ import {
 } from '../constants'
 import { animations } from '../utils'
 
-const CTAButtons = styled.div`
-  display: flex;
-`
-
 const Headline = styled.h1`
   color: ${COLORS.WHITE};
-  font-family: ${FONT_FAMILIES.SANS_SERIF};
+  font-family: ${FONT_FAMILIES.MONOSPACE};
   font-size: ${FONT_SIZES.LARGE};
   font-weight: ${FONT_WEIGHTS.LIGHT};
-  line-height: 1.25;
-  margin-bottom: 1.25rem;
+  line-height: 1.5;
   text-align: center;
-`
-
-const Highlight = styled.span`
-  color: ${COLORS.RED};
-  font-weight: ${FONT_WEIGHTS.SEMI_BOLD};
 `
 
 const Hero = styled.section`
@@ -38,7 +28,7 @@ const Hero = styled.section`
   flex-direction: column;
   opacity: 0;
   transform: translateY(-2%);
-  z-index: ${ZINDEX.HERO};
+  z-index: ${ZINDEX.CONTENT};
 `
 
 export default () => (
@@ -46,18 +36,10 @@ export default () => (
     <Headline>
       Hello, I&apos;m
       {' '}
-      <Highlight>Nicholas O&apos;Donnell</Highlight>
+      <Glitch>Nicholas O&apos;Donnell</Glitch>
       .
       <br />
       I&apos;m a full-stack software engineer.
     </Headline>
-    <CTAButtons>
-      <Button href="https://github.com/nicholasodonnell" target="_blank" rel="noopener noreferrer">
-        Explore Work
-      </Button>
-      <Button href="https://www.linkedin.com/in/nicholas-odonnell" target="_blank" rel="noopener noreferrer">
-        View Profile
-      </Button>
-    </CTAButtons>
   </Hero>
 )

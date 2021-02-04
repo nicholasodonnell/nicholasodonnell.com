@@ -5,36 +5,36 @@ export const BREAKPOINTS = {
 }
 
 export const COLORS = {
+  BLUE: '#69C9D0',
   DARK_BLUE: '#282C34',
-  RED: '#E31B6D',
+  RED: '#EE1D52',
   WHITE: '#FFFFFF',
 }
 
 export const FONT_FAMILIES = {
-  SANS_SERIF: 'Raleway, sans-serif',
+  MONOSPACE: 'Roboto Mono, monospace',
 }
 
 export const FONT_SIZES = {
-  SMALL: '0.8rem',
-  MEDIUM: '1.2rem',
-  LARGE: '2.65rem',
+  MEDIUM: '1rem',
+  LARGE: '2.4rem',
 }
 
 export const FONT_WEIGHTS = {
   LIGHT: 300,
-  REGULAR: 400,
   SEMI_BOLD: 600,
 }
 
-export const PARTICLE_PER_SQUARE_PIXELS = 40000
+export const PARTICLE_PER_SQUARE_PIXELS = 25000
 
 export const TIMINGS = {
   SHORT: '200ms',
   MEDIUM: '500ms',
   LONG: '1000ms',
+  GLITCH: '4000ms',
 }
 
 export const ZINDEX = {
-  PARTICLES: 1,
-  HERO: 2,
+  BACKGROUND: 1,
+  CONTENT: 2,
 }
