@@ -1,3 +1,4 @@
+import { compose } from 'ramda'
 import React, { useEffect } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 
@@ -8,6 +9,7 @@ import {
   Hero,
   Particles,
 } from './containers'
+import { layout as layoutUtil } from './utils'
 import { withState } from './state'
 
 const GlobalStyle = createGlobalStyle`
@@ -35,7 +37,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const StyledApp = styled.div`
+const Layout = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -52,19 +54,20 @@ const StyledApp = styled.div`
 export default () => {
   const { dispatch, layout } = withState()
 
-  useEffect(() => window.addEventListener('resize', () => dispatch(setLayout({
-    height: window.innerHeight,
-    width: window.innerWidth,
-  }))), [])
+  useEffect(() => window.addEventListener('resize', compose(
+    dispatch,
+    setLayout,
+    layoutUtil.calc,
+  )), [])
 
   return (
     <>
       <GlobalStyle />
-      <StyledApp height={layout.height}>
+      <Layout height={layout.height}>
         <Hero />
         <Buttons />
         <Particles />
-      </StyledApp>
+      </Layout>
     </>
   )
 }

@@ -1,4 +1,6 @@
-<img src="logo/logo.png" />
+<p align="center">
+  <img src="logo.png" width="350" />
+</p>
 
 My personal website located at https://nicholasodonnell.com.
 

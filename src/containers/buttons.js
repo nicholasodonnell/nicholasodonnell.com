@@ -8,7 +8,7 @@ import {
 } from '../constants'
 import { animations } from '../utils'
 
-const Buttons = styled.div`
+const Buttons = styled.section`
   animation: ${animations.fadeInDown} ${TIMINGS.LONG} ease ${TIMINGS.SHORT} 1 forwards;
   display: flex;
   flex-direction: row;
