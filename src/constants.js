@@ -5,9 +5,9 @@ export const BREAKPOINTS = {
 }
 
 export const COLORS = {
-  BLUE: '#69C9D0',
+  BLUE: '#6CC0E5',
   DARK_BLUE: '#282A36',
-  RED: '#EE1D52',
+  RED: '#FB4F4F',
   WHITE: '#FFFFFF',
 }
 
@@ -31,7 +31,7 @@ export const TIMINGS = {
   SHORT: '200ms',
   MEDIUM: '500ms',
   LONG: '1000ms',
-  GLITCH: '4000ms',
+  GLITCH: '5000ms',
 }
 
 export const ZINDEX = {
