@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "My personal website.",
   "author": "Nicholas O'Donnell <nicholas@nicholasodonnell.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "webpack serve --mode development --open --hot",
     "build": "webpack --mode production"

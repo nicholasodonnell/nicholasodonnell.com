@@ -22,11 +22,14 @@ export default () => {
       height={layout.height}
       params={{
         particles: {
+          lineLinked: {
+            distance: 125,
+          },
+          move: {
+            speed: 1.5,
+          },
           number: {
             value: Math.ceil((layout.height * layout.width) / PARTICLE_PER_SQUARE_PIXELS),
-          },
-          size: {
-            value: 1,
           },
         },
         interactivity: {
