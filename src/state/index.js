@@ -6,19 +6,10 @@ import initialState from './initialState'
 
 export const StateContext = createContext()
 
-export const StateProvider = ({ children }) => {
-  const [ state, dispatch ] = useReducer(reducer, initialState)
-
-  return (
-    <StateContext.Provider
-      value={{
-        ...state,
-        dispatch,
-      }}
-    >
-      {children}
-    </StateContext.Provider>
-  )
-}
+export const StateProvider = ({ children }) => (
+  <StateContext.Provider value={useReducer(reducer, initialState)}>
+    {children}
+  </StateContext.Provider>
+)
 
 export const withState = compose(useContext, always(StateContext))

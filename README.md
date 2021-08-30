@@ -16,12 +16,12 @@ Install the required dependencies by running `yarn install`.
 
 To build production assets:
 ```
-yarn run build
+yarn build
 ```
 
 To start the development server located on [http://localhost:3000](http://localhost:3000):
 ```
-yarn run dev
+yarn dev
 ```
 
 ## Deploy

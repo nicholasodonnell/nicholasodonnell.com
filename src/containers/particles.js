@@ -15,7 +15,7 @@ const StyledParticles = styled(Particles)`
 `
 
 export default () => {
-  const { layout } = withState()
+  const [ { layout } ] = withState()
 
   return (
     <StyledParticles
