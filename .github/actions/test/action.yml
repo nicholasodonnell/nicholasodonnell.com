@@ -1,10 +1,10 @@
-name: 'Build'
+name: 'Test'
 author: 'nicholas@nicholasodonnell.com'
-description: 'Build'
+description: 'Test'
 
 branding:
-  color: 'blue'
-  icon: 'code'
+  color: 'orange'
+  icon: 'check'
 
 runs:
   using: 'docker'

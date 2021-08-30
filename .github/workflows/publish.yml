@@ -1,13 +1,18 @@
 name: 'Publish'
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Check
     branches:
       - master
+    types:
+      - completed
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       -
         name: Checkout

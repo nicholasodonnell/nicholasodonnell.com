@@ -3,8 +3,8 @@ author: 'nicholas@nicholasodonnell.com'
 description: 'Deploy'
 
 branding:
-  icon: 'globe'
   color: 'green'
+  icon: 'globe'
 
 inputs:
   github_token:
