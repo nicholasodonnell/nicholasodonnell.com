@@ -4,6 +4,8 @@
 
 My personal website located at https://nicholasodonnell.com.
 
+[![Check](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/check.yml/badge.svg?branch=master)](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/check.yml)&nbsp;&nbsp;&nbsp;[![Publish](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/publish.yml/badge.svg?branch=master)](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/publish.yml)
+
 ### Requirements
 
 - [Node](https://nodejs.org/en/)

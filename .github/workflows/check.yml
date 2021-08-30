@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
     steps:
       -
@@ -18,4 +18,4 @@ jobs:
       -
         name: Test
         uses: ./.github/actions/test
-        id: build
+        id: test
