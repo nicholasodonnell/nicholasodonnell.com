@@ -14,7 +14,7 @@ const Button = styled.a`
   border: 1px solid ${COLORS.WHITE};
   color: ${COLORS.WHITE};
   font-family: ${FONT_FAMILIES.MONOSPACE};
-  font-size: ${FONT_SIZES.MEDIUM};
+  font-size: ${FONT_SIZES.SMALL};
   font-weight: ${FONT_WEIGHTS.LIGHT};
   line-height: 1;
   margin: 2.5rem 1rem;

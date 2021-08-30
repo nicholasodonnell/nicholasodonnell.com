@@ -16,8 +16,9 @@ export const FONT_FAMILIES = {
 }
 
 export const FONT_SIZES = {
-  MEDIUM: '1rem',
   LARGE: '2.4rem',
+  MEDIUM: '1.8rem',
+  SMALL: '1rem',
 }
 
 export const FONT_WEIGHTS = {
