@@ -3,5 +3,8 @@
 # install dependencies
 yarn install --cwd $GITHUB_WORKSPACE --pure-lockfile
 
-# build production assets
+# run linter
 yarn --cwd $GITHUB_WORKSPACE lint
+
+# run tests
+yarn --cwd $GITHUB_WORKSPACE test

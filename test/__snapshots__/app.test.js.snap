@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> renders 1`] = `
+<body>
+  <div>
+    <main
+      class="app__Layout-sc-ped1vy-0 ezFLgy"
+      height="768"
+    >
+      <section
+        class="hero__Hero-sc-1aqihmc-0 kCvvBL"
+      >
+        <h1
+          class="hero__Headline-sc-1aqihmc-1 jrBRfB"
+        >
+          Hello, I'm
+           
+          <span
+            class="glitch__Glitch-sc-132n1b8-0 ieqEnw"
+            data-text="NICHOLAS O'DONNELL"
+          >
+            Nicholas O'Donnell
+          </span>
+        </h1>
+        <h2
+          class="hero__Subheadline-sc-1aqihmc-2 kcUSpw"
+        >
+          I'm a full-stack software engineer
+        </h2>
+      </section>
+      <section
+        class="buttons__Buttons-sc-z6ncaw-0 iSrBiH"
+      >
+        <a
+          class="button__Button-sc-t9ab1t-0 bGCyiK"
+          href="https://github.com/nicholasodonnell"
+          target="_blank"
+        >
+          Explore Work
+        </a>
+        <a
+          class="button__Button-sc-t9ab1t-0 bGCyiK"
+          href="https://www.linkedin.com/in/nicholas-odonnell"
+          target="_blank"
+        >
+          View Profile
+        </a>
+      </section>
+      <div
+        class="particles__StyledParticles-sc-c5w8sv-0 kDjfpa"
+        id="tsparticles"
+      >
+        <canvas
+          class="tsparticles-canvas-el"
+          height="0"
+          style="width: 1024px; height: 768px;"
+          width="0"
+        />
+      </div>
+    </main>
+  </div>
+</body>
+`;
