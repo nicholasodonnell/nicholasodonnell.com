@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" width="200px" />
+  <img src="logo.svg" width="200px" />
 </p>
 
 My personal website located at https://nicholasodonnell.com.
