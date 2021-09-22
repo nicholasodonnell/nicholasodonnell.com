@@ -4,8 +4,7 @@ exports[`<App /> renders 1`] = `
 <body>
   <div>
     <main
-      class="app__Layout-sc-ped1vy-0 ezFLgy"
-      height="768"
+      class="app__Layout-sc-ped1vy-0 cWiEpR"
     >
       <section
         class="hero__Hero-sc-1aqihmc-0 kCvvBL"
@@ -46,17 +45,7 @@ exports[`<App /> renders 1`] = `
           View Profile
         </a>
       </section>
-      <div
-        class="particles__StyledParticles-sc-c5w8sv-0 kDjfpa"
-        id="tsparticles"
-      >
-        <canvas
-          class="tsparticles-canvas-el"
-          height="0"
-          style="width: 1024px; height: 768px;"
-          width="0"
-        />
-      </div>
+      <canvas />
     </main>
   </div>
 </body>

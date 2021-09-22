@@ -1,16 +1,12 @@
-import { compose } from 'ramda'
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 
-import { setLayout } from './actions'
 import { BREAKPOINTS, COLORS } from './constants'
 import {
   Buttons,
   Hero,
   Particles,
 } from './containers'
-import { layout as layoutUtil } from './utils'
-import { withState } from './state'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -42,32 +38,21 @@ const Layout = styled.main`
   display: flex;
   flex-direction: column;
   flex: 1;
-  height: ${({ height }) => height}px;
+  height: 100vh;
   justify-content: center;
-  max-height: 100vh;
   overflow: hidden;
   padding: 15px;
-  position: relative;
+  position: fixed;
   width: 100vw;
 `
 
-export default () => {
-  const [ { layout }, dispatch ] = withState()
-
-  useEffect(() => window.addEventListener('resize', compose(
-    dispatch,
-    setLayout,
-    layoutUtil.calc,
-  )), [])
-
-  return (
-    <>
-      <GlobalStyle />
-      <Layout height={layout.height}>
-        <Hero />
-        <Buttons />
-        <Particles />
-      </Layout>
-    </>
-  )
-}
+export default () => (
+  <>
+    <GlobalStyle />
+    <Layout>
+      <Hero />
+      <Buttons />
+      <Particles />
+    </Layout>
+  </>
+)

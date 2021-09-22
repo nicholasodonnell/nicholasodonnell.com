@@ -28,7 +28,6 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",
     "jest": "^27.2.1",
-    "jest-canvas-mock": "^2.3.1",
     "webpack": "^5.53.0",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.2.1"
@@ -37,8 +36,7 @@
     "ramda": "^0.27.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-particles-js": "^3.5.3",
-    "styled-components": "^5.3.1",
-    "tsparticles": "^1.35.1"
+    "react-tsparticles": "^1.35.1",
+    "styled-components": "^5.3.1"
   }
 }

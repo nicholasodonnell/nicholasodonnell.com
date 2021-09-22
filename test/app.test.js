@@ -2,14 +2,13 @@ import React from 'react'
 import { render } from '@testing-library/react'
 
 import App from '../src/app'
-import { StateProvider } from '../src/state'
+
+jest.mock('react-tsparticles', () => () => <canvas />)
 
 describe('<App />', () => {
   it('renders', () => {
     const app = render(
-      <StateProvider>
-        <App />
-      </StateProvider>
+      <App />
     )
 
     expect(app.baseElement).toMatchSnapshot()
