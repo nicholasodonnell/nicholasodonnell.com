@@ -26,7 +26,7 @@ export const FONT_WEIGHTS = {
   SEMI_BOLD: 600,
 }
 
-export const PARTICLE_PER_SQUARE_PIXELS = 25000
+export const PARTICLE_DENSITY = 3000
 
 export const TIMINGS = {
   SHORT: '200ms',
