@@ -4,7 +4,7 @@
 
 My personal website located at https://nicholasodonnell.com.
 
-[![Check](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/check.yml/badge.svg?branch=master)](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/check.yml)&nbsp;&nbsp;&nbsp;[![Publish](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/publish.yml/badge.svg?branch=master)](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/publish.yml)
+[![Check](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/check.yml)&nbsp;&nbsp;&nbsp;[![Publish](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/publish.yml/badge.svg?branch=main)](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/publish.yml)
 
 ### Requirements
 
@@ -28,4 +28,4 @@ yarn dev
 
 ## Deploy
 
-Commits to the `master` branch with be automatically deployed to the [`gh-pages`](https://github.com/nicholasodonnell/nicholasodonnell.com/tree/gh-pages) branch.
+Commits to the `main` branch with be automatically deployed to the [`gh-pages`](https://github.com/nicholasodonnell/nicholasodonnell.com/tree/gh-pages) branch.
