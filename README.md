@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="logo.svg" width="200px" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="logo-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="logo-light.svg">
+    <img src="logo-light.svg">
+  </picture>
 </p>
 
 My personal website located at https://nicholasodonnell.com.

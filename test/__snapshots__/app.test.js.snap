@@ -4,41 +4,41 @@ exports[`<App /> renders 1`] = `
 <body>
   <div>
     <main
-      class="app__Layout-sc-ped1vy-0 cWiEpR"
+      class="sc-iBkjds klUzpK"
     >
       <section
-        class="hero__Hero-sc-1aqihmc-0 kCvvBL"
+        class="sc-hKMtZM dMoMas"
       >
         <h1
-          class="hero__Headline-sc-1aqihmc-1 jrBRfB"
+          class="sc-eCYdqJ tumFC"
         >
           Hello, I'm
            
           <span
-            class="glitch__Glitch-sc-132n1b8-0 ieqEnw"
+            class="sc-gsnTZi iTabn"
             data-text="NICHOLAS O'DONNELL"
           >
             Nicholas O'Donnell
           </span>
         </h1>
         <h2
-          class="hero__Subheadline-sc-1aqihmc-2 kcUSpw"
+          class="sc-jSMfEi faRZsE"
         >
           I'm a full-stack software engineer
         </h2>
       </section>
       <section
-        class="buttons__Buttons-sc-z6ncaw-0 iSrBiH"
+        class="sc-dkzDqf kGYhMy"
       >
         <a
-          class="button__Button-sc-t9ab1t-0 bGCyiK"
+          class="sc-bczRLJ jKCSZy"
           href="https://github.com/nicholasodonnell"
           target="_blank"
         >
           Explore Work
         </a>
         <a
-          class="button__Button-sc-t9ab1t-0 bGCyiK"
+          class="sc-bczRLJ jKCSZy"
           href="https://www.linkedin.com/in/nicholas-odonnell"
           target="_blank"
         >

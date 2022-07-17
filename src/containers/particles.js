@@ -1,6 +1,7 @@
 import React from 'react'
 import Particles from 'react-tsparticles'
 import styled from 'styled-components'
+import { loadFull } from 'tsparticles'
 
 import { COLORS, PARTICLE_DENSITY, ZINDEX } from '../constants'
 
@@ -12,6 +13,10 @@ const StyledParticles = styled(Particles)`
   height: 100%;
   z-index: ${ZINDEX.BACKGROUND};
 `
+
+const particlesInit = main => {
+  loadFull(main)
+}
 
 const particleOptions = {
   particles: {
@@ -111,6 +116,7 @@ const particleOptions = {
 
 export default () => (
   <StyledParticles
+    init={particlesInit}
     options={particleOptions}
   />
 )
