@@ -8,27 +8,17 @@
 
 My personal website located at https://nicholasodonnell.com.
 
-[![Check](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/check.yml)&nbsp;&nbsp;&nbsp;[![Publish](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/publish.yml/badge.svg?branch=main)](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/publish.yml)
+[![Publish](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/publish.yml/badge.svg?branch=main)](https://github.com/nicholasodonnell/nicholasodonnell.com/actions/workflows/publish.yml)
 
-### Requirements
+## Getting Started
 
-- [Node](https://nodejs.org/en/)
+1. `cp -n docker-compose.override{.example,}.yml`
+2. `docker-compose build --pull`
 
-## Installation
+## Development
 
-Install the required dependencies by running `yarn install`.
-
-## Usage
-
-To build production assets:
-```
-yarn build
-```
-
-To start the development server located on [http://localhost:3000](http://localhost:3000):
-```
-yarn dev
-```
+1. `docker-compose up`
+2. Navigate to [localhost:3000](http://localhost:3000)
 
 ## Deploy
 

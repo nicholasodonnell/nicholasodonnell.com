@@ -1,0 +1,22 @@
+version: "3.5"
+services:
+
+  app:
+    build: .
+    container_name: nicholasodonnell.com
+    image: nicholasodonnell/nicholasodonnell.com:latest
+    networks:
+      - nicholasodonnell.com
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+      - node-modules:/app/node_modules
+
+networks:
+  nicholasodonnell.com:
+    driver: bridge
+    name: nicholasodonnell.com
+
+volumes:
+  node-modules:

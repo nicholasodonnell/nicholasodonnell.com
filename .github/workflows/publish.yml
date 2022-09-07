@@ -1,29 +1,43 @@
-name: 'Publish'
+name: Publish
 
 on:
-  workflow_run:
-    workflows:
-      - Check
+  push:
     branches:
       - main
-    types:
-      - completed
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
     steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v2
-      -
-        name: Build
-        uses: ./.github/actions/build
-        id: build
-      -
-        name: Deploy
-        uses: ./.github/actions/deploy
-        id: deploy
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Checkout repo under GH workspace
+      uses: actions/checkout@v2
+
+    - name: Setup nodejs
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'yarn'
+
+    - name: Install deps
+      run: yarn install --pure-lockfile
+
+    - name: Lint
+      run: yarn lint
+
+    - name: Test
+      run: yarn test
+
+    - name: Build output
+      run: yarn build
+
+    - name: Deploy to gh-pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: ${{ github.ref == 'refs/heads/main' }}
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+        cname: nicholasodonnell.com
