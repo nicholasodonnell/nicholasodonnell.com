@@ -49,7 +49,7 @@ export default () => (
       <Glitch>Nicholas O&apos;Donnell</Glitch>
     </Headline>
     <Subheadline>
-      I&apos;m a full-stack software engineer
+      I&apos;m a full-stack senior software engineer
     </Subheadline>
   </Hero>
 )
