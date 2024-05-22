@@ -246,7 +246,7 @@
   flex-direction: row;
   opacity: 0;
   z-index: ${2};
-`,Wt=()=>e.createElement($t,null,e.createElement(We,{href:"https://github.com/nicholasodonnell",target:"_blank",rel:"noopener noreferrer"},"Explore Work"),e.createElement(We,{href:"https://www.linkedin.com/in/nicholas-odonnell",target:"_blank",rel:"noopener noreferrer"},"View Profile")),qt=Le.section`
+`,Wt=()=>e.createElement($t,null,e.createElement(We,{href:"https://github.com/nicholasodonnell",target:"_blank",rel:"noopener noreferrer"},"Explore Work"),e.createElement(We,{href:"https://www.linkedin.com/in/nicholasodo",target:"_blank",rel:"noopener noreferrer"},"View Profile")),qt=Le.section`
   align-items: center;
   animation: ${jt} ${Ue} ease ${Fe} 1 forwards;
   display: flex;
