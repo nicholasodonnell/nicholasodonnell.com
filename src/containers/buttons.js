@@ -21,7 +21,7 @@ export default () => (
     <Button href="https://github.com/nicholasodonnell" target="_blank" rel="noopener noreferrer">
       Explore Work
     </Button>
-    <Button href="https://www.linkedin.com/in/nicholas-odonnell" target="_blank" rel="noopener noreferrer">
+    <Button href="https://www.linkedin.com/in/nicholasodo" target="_blank" rel="noopener noreferrer">
       View Profile
     </Button>
   </Buttons>

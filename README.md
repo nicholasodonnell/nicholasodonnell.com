@@ -12,8 +12,7 @@ My personal website located at https://nicholasodonnell.com.
 
 ## Getting Started
 
-1. `cp -n docker-compose.override{.example,}.yml`
-2. `docker-compose build --pull`
+1. `docker-compose build --pull`
 
 ## Development
 
