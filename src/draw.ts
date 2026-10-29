@@ -37,9 +37,11 @@ function drawNumber(ctx: CanvasRenderingContext2D, value: number, x: number, y: 
 export function draw(
   ctx: CanvasRenderingContext2D,
   state: GameState,
-  view: { playing: boolean; progress: number; scoreY: number },
+  view: { playing: boolean; progress: number; scoreY: number; pixelsPerUnit: number },
 ): void {
   const { cols, rows, paddleH, ball, score } = state
+  // Moving pieces snap to device pixels, not grid cells, so they glide instead of stepping a whole cell.
+  const snap = (value: number) => Math.round(value * view.pixelsPerUnit) / view.pixelsPerUnit
   ctx.clearRect(0, 0, cols, rows)
 
   ctx.fillStyle = white(LINE_ALPHA, view.progress)
@@ -54,8 +56,8 @@ export function draw(
   }
   ctx.fillStyle = white(PIECE_ALPHA, view.progress)
   if (state.serveTimer <= 0) {
-    ctx.fillRect(Math.round(ball.x), Math.round(ball.y), BALL, BALL)
+    ctx.fillRect(snap(ball.x), snap(ball.y), BALL, BALL)
   }
-  ctx.fillRect(cols - PADDLE_INSET - PADDLE_W, Math.round(state.right.y), PADDLE_W, paddleH)
-  ctx.fillRect(PADDLE_INSET, Math.round(state.left.y), PADDLE_W, paddleH)
+  ctx.fillRect(cols - PADDLE_INSET - PADDLE_W, snap(state.right.y), PADDLE_W, paddleH)
+  ctx.fillRect(PADDLE_INSET, snap(state.left.y), PADDLE_W, paddleH)
 }

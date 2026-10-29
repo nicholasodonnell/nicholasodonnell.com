@@ -9,12 +9,16 @@ const MAX_CROSS_SECONDS = 0.9
 const SPEEDUP = 1.05
 const MAX_BOUNCE_ANGLE = (50 * Math.PI) / 180
 const SERVE_MAX_ANGLE = (30 * Math.PI) / 180
-const BOT_SPEED = 0.7
+const BOT_SPEED = 1.0
 const HARD_BOT_SPEED = 0.3
 const PLAYER_SPEED = 1.2
 const BOT_AIM_SPREAD = 0.45
 const HARD_AIM_MIN = 0
 const HARD_AIM_MAX = 0.15
+// Fraction of the remaining distance a bot covers per step, so it eases in instead of stopping dead.
+const BOT_EASING = 0.4
+// Steps a bot takes to go from standing still to full speed.
+const BOT_ACCEL_STEPS = 5
 
 export type Side = 'left' | 'right'
 export type GameEvent = 'paddle' | 'wall' | 'score'
@@ -22,6 +26,7 @@ export type GameEvent = 'paddle' | 'wall' | 'score'
 export interface Paddle {
   y: number
   aim: number
+  vy: number
 }
 
 export interface Ball {
@@ -75,8 +80,8 @@ export function createGame(cols: number, rows: number): GameState {
     cols,
     rows,
     paddleH,
-    left: { y: paddleY, aim: randomAim(paddleH, false) },
-    right: { y: paddleY, aim: randomAim(paddleH, false) },
+    left: { y: paddleY, aim: randomAim(paddleH, false), vy: 0 },
+    right: { y: paddleY, aim: randomAim(paddleH, false), vy: 0 },
     ball: { x: cols / 2 - BALL / 2, y: rows / 2 - BALL / 2, vx: 0, vy: 0, speed: 0 },
     serveTimer: SERVE_DELAY,
     serveTo: Math.random() < 0.5 ? 'left' : 'right',
@@ -90,10 +95,11 @@ export function resizeGame(state: GameState, cols: number, rows: number): GameSt
 
 function movePaddle(state: GameState, paddle: Paddle, target: number, maxStep: number): Paddle {
   const delta = target - (paddle.y + state.paddleH / 2)
-  if (Math.abs(delta) < 1) {
-    return paddle
-  }
-  return { ...paddle, y: clamp(paddle.y + clamp(delta, -maxStep, maxStep), 0, state.rows - state.paddleH) }
+  const desired = clamp(delta * BOT_EASING, -maxStep, maxStep)
+  const accel = maxStep / BOT_ACCEL_STEPS
+  const vy = paddle.vy + clamp(desired - paddle.vy, -accel, accel)
+  const y = clamp(paddle.y + vy, 0, state.rows - state.paddleH)
+  return { ...paddle, y, vy: y - paddle.y }
 }
 
 // Folds the straight-line path back into the court to account for wall bounces.
@@ -128,8 +134,8 @@ function hardBot(state: GameState): Paddle {
 }
 
 function playerPaddle(state: GameState, dir: -1 | 0 | 1): Paddle {
-  const y = state.left.y + dir * PLAYER_SPEED * state.rows * DT
-  return { ...state.left, y: clamp(y, 0, state.rows - state.paddleH) }
+  const y = clamp(state.left.y + dir * PLAYER_SPEED * state.rows * DT, 0, state.rows - state.paddleH)
+  return { ...state.left, y, vy: y - state.left.y }
 }
 
 function serve(state: GameState, playing: boolean): GameState {

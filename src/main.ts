@@ -19,18 +19,20 @@ if (!canPlay) {
 // Touch screens get a coarser grid so the ball and paddles stay visible on small screens.
 const GRID_DIVISOR = canPlay ? 150 : 70
 
-function layout(): { scale: number; cols: number; rows: number; offsetX: number } {
+function layout(): { scale: number; cols: number; rows: number; offsetX: number; pixelsPerUnit: number } {
   const scale = Math.max(3, Math.floor(Math.min(innerWidth, innerHeight) / GRID_DIVISOR))
   // An odd column count puts the center line exactly on the viewport center.
   const cols = Math.ceil(innerWidth / scale) | 1
   const rows = Math.ceil(innerHeight / scale)
   const offsetX = (innerWidth - cols * scale) / 2
-  canvas.width = cols
-  canvas.height = rows
+  const pixelsPerUnit = scale * devicePixelRatio
+  canvas.width = Math.round(cols * pixelsPerUnit)
+  canvas.height = Math.round(rows * pixelsPerUnit)
+  ctx.setTransform(pixelsPerUnit, 0, 0, pixelsPerUnit, 0, 0)
   canvas.style.left = `${offsetX}px`
   canvas.style.width = `${cols * scale}px`
   canvas.style.height = `${rows * scale}px`
-  return { scale, cols, rows, offsetX }
+  return { scale, cols, rows, offsetX, pixelsPerUnit }
 }
 
 let view = layout()
@@ -119,7 +121,7 @@ function frame(time: number): void {
   if (playing) {
     positionHint()
   }
-  draw(ctx, state, { playing, progress: scrollProgress, scoreY })
+  draw(ctx, state, { playing, progress: scrollProgress, scoreY, pixelsPerUnit: view.pixelsPerUnit })
   requestAnimationFrame(frame)
 }
 
