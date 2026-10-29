@@ -16,21 +16,28 @@ if (!canPlay) {
   document.documentElement.classList.add('no-play')
 }
 
-function layout(): { scale: number; cols: number; rows: number } {
-  const scale = Math.max(3, Math.floor(Math.min(innerWidth, innerHeight) / 150))
-  const cols = Math.ceil(innerWidth / scale)
+// Touch screens get a coarser grid so the ball and paddles stay visible on small screens.
+const GRID_DIVISOR = canPlay ? 150 : 70
+
+function layout(): { scale: number; cols: number; rows: number; offsetX: number } {
+  const scale = Math.max(3, Math.floor(Math.min(innerWidth, innerHeight) / GRID_DIVISOR))
+  // An odd column count puts the center line exactly on the viewport center.
+  const cols = Math.ceil(innerWidth / scale) | 1
   const rows = Math.ceil(innerHeight / scale)
+  const offsetX = (innerWidth - cols * scale) / 2
   canvas.width = cols
   canvas.height = rows
+  canvas.style.left = `${offsetX}px`
   canvas.style.width = `${cols * scale}px`
   canvas.style.height = `${rows * scale}px`
-  return { scale, cols, rows }
+  return { scale, cols, rows, offsetX }
 }
 
 let view = layout()
 let state = createGame(view.cols, view.rows)
 let playing = false
 let scoreY = 0
+let scrollProgress = 0
 let hintTimer = 0
 let accumulator = 0
 let lastTime = performance.now()
@@ -48,7 +55,7 @@ function playerDir(): -1 | 0 | 1 {
 const measureScoreY = () => Math.ceil((headline.getBoundingClientRect().bottom + 28) / view.scale)
 
 function positionHint(): void {
-  hint.style.left = `${(PADDLE_INSET + PADDLE_W / 2) * view.scale}px`
+  hint.style.left = `${view.offsetX + (PADDLE_INSET + PADDLE_W / 2) * view.scale}px`
   hint.style.top = `calc(${state.left.y * view.scale}px - 1.5em)`
   hint.style.height = `calc(${state.paddleH * view.scale}px + 3em)`
 }
@@ -73,6 +80,7 @@ function onScroll(): void {
   const max = document.documentElement.scrollHeight - innerHeight
   const progress = max > 0 ? Math.min(Math.max(scrollY / max, 0), 1) : 0
   document.documentElement.style.setProperty('--p', String(progress))
+  scrollProgress = progress
   links.inert = progress >= 0.5
   const next = canPlay && progress >= 0.99
   if (next === playing) {
@@ -86,8 +94,11 @@ function onScroll(): void {
 }
 
 function onResize(): void {
+  const previous = view
   view = layout()
-  state = resizeGame(state, view.cols, view.rows)
+  if (view.cols !== previous.cols || view.rows !== previous.rows) {
+    state = resizeGame(state, view.cols, view.rows)
+  }
   onScroll()
   if (playing) {
     scoreY = measureScoreY()
@@ -108,7 +119,7 @@ function frame(time: number): void {
   if (playing) {
     positionHint()
   }
-  draw(ctx, state, { playing, scoreY })
+  draw(ctx, state, { playing, progress: scrollProgress, scoreY })
   requestAnimationFrame(frame)
 }
 

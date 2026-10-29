@@ -11,10 +11,16 @@ body {
   font-family: "Geist Mono", ui-monospace, monospace;
 }
 
+.no-play,
+.no-play body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 #court {
   position: fixed;
   top: 0;
-  left: 0;
   z-index: 0;
   image-rendering: pixelated;
   pointer-events: none;
@@ -34,14 +40,15 @@ body {
 }
 
 .hero h1 {
-  margin: -0.3em 0;
-  padding: 0.3em 0.8em;
+  --pad-y: calc(0.3em + 0.3em * var(--p));
+  margin: calc(-1 * var(--pad-y)) 0;
+  padding: var(--pad-y) calc(0.8em + 0.6em * var(--p));
   line-height: 1;
   background: rgb(0 0 0 / var(--p));
   font-weight: 500;
   font-size: clamp(1.5rem, 4.5vw, 2.5rem);
   letter-spacing: 0.04em;
-  color: rgb(255 255 255 / calc(0.85 - 0.4 * var(--p)));
+  color: rgb(255 255 255 / 0.85);
 }
 
 .hero p,
@@ -61,6 +68,7 @@ body {
   display: flex;
   gap: 1.25rem;
   justify-content: center;
+  margin-top: 0.2rem;
 }
 
 .hero a {
