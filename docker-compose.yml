@@ -1,0 +1,10 @@
+services:
+  dev:
+    build: .
+    image: nicholasodonnell/nicholasodonnell.com:dev
+    container_name: nicholasodonnell.com
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
