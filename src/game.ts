@@ -9,16 +9,22 @@ const MAX_CROSS_SECONDS = 0.9
 const SPEEDUP = 1.05
 const MAX_BOUNCE_ANGLE = (50 * Math.PI) / 180
 const SERVE_MAX_ANGLE = (30 * Math.PI) / 180
-const BOT_SPEED = 1.0
-const HARD_BOT_SPEED = 0.3
+const BOT_SPEED = 0.9
+const HARD_BOT_SPEED = 0.5
 const PLAYER_SPEED = 1.2
-const BOT_AIM_SPREAD = 0.45
+const BOT_AIM_SPREAD = 0.2
 const HARD_AIM_MIN = 0
 const HARD_AIM_MAX = 0.15
 // Fraction of the remaining distance a bot covers per step, so it eases in instead of stopping dead.
-const BOT_EASING = 0.4
+const BOT_EASING = 0.25
 // Steps a bot takes to go from standing still to full speed.
-const BOT_ACCEL_STEPS = 5
+const BOT_ACCEL_STEPS = 10
+// Court-width fraction from the receiver at which it starts tracking, rolled per shot.
+const REACT_MIN = 0.4
+const REACT_MAX = 0.7
+// The hitter drifts back to center at a fraction of its speed once its shot is this far away.
+const RECOVER_DISTANCE = 0.12
+const RECOVER_SPEED = 0.3
 
 export type Side = 'left' | 'right'
 export type GameEvent = 'paddle' | 'wall' | 'score'
@@ -26,6 +32,7 @@ export type GameEvent = 'paddle' | 'wall' | 'score'
 export interface Paddle {
   y: number
   aim: number
+  react: number
   vy: number
 }
 
@@ -68,9 +75,11 @@ function randomAim(paddleH: number, hard: boolean): number {
   return sign * (HARD_AIM_MIN + Math.random() * (HARD_AIM_MAX - HARD_AIM_MIN)) * paddleH
 }
 
+const randomReact = () => REACT_MIN + Math.random() * (REACT_MAX - REACT_MIN)
+
 function withAim(state: GameState, side: Side, playing: boolean): GameState {
   const aim = randomAim(state.paddleH, side === 'right' && playing)
-  return { ...state, [side]: { ...state[side], aim } }
+  return { ...state, [side]: { ...state[side], aim, react: randomReact() } }
 }
 
 export function createGame(cols: number, rows: number): GameState {
@@ -80,8 +89,8 @@ export function createGame(cols: number, rows: number): GameState {
     cols,
     rows,
     paddleH,
-    left: { y: paddleY, aim: randomAim(paddleH, false), vy: 0 },
-    right: { y: paddleY, aim: randomAim(paddleH, false), vy: 0 },
+    left: { y: paddleY, aim: randomAim(paddleH, false), react: randomReact(), vy: 0 },
+    right: { y: paddleY, aim: randomAim(paddleH, false), react: randomReact(), vy: 0 },
     ball: { x: cols / 2 - BALL / 2, y: rows / 2 - BALL / 2, vx: 0, vy: 0, speed: 0 },
     serveTimer: SERVE_DELAY,
     serveTo: Math.random() < 0.5 ? 'left' : 'right',
@@ -112,25 +121,27 @@ function predictY(state: GameState, face: number): number {
   return folded <= span ? folded : 2 * span - folded
 }
 
-function isApproaching(state: GameState, side: Side): boolean {
+// The receiver holds still until the ball reaches its rolled reaction point; the hitter drifts home slowly.
+function botPaddle(state: GameState, side: Side, trackY: () => number, maxStep: number): Paddle {
+  const paddle = state[side]
+  const hold = paddle.y + state.paddleH / 2
   if (state.serveTimer > 0) {
-    return false
+    return movePaddle(state, paddle, state.rows / 2, maxStep * RECOVER_SPEED)
   }
-  return side === 'left' ? state.ball.vx < 0 : state.ball.vx > 0
+  const approaching = side === 'left' ? state.ball.vx < 0 : state.ball.vx > 0
+  const distance = (side === 'left' ? state.ball.x : state.cols - state.ball.x) / state.cols
+  if (approaching) {
+    return movePaddle(state, paddle, distance <= paddle.react ? trackY() + BALL / 2 + paddle.aim : hold, maxStep)
+  }
+  return movePaddle(state, paddle, distance >= RECOVER_DISTANCE ? state.rows / 2 : hold, maxStep * RECOVER_SPEED)
 }
 
 function ambientBot(state: GameState, side: Side): Paddle {
-  const paddle = state[side]
-  const target = isApproaching(state, side) ? state.ball.y + BALL / 2 + paddle.aim : state.rows / 2
-  return movePaddle(state, paddle, target, BOT_SPEED * state.rows * DT)
+  return botPaddle(state, side, () => state.ball.y, BOT_SPEED * state.rows * DT)
 }
 
 function hardBot(state: GameState): Paddle {
-  const paddle = state.right
-  const target = isApproaching(state, 'right')
-    ? predictY(state, rightFace(state.cols)) + BALL / 2 + paddle.aim
-    : state.rows / 2
-  return movePaddle(state, paddle, target, HARD_BOT_SPEED * state.rows * DT)
+  return botPaddle(state, 'right', () => predictY(state, rightFace(state.cols)), HARD_BOT_SPEED * state.rows * DT)
 }
 
 function playerPaddle(state: GameState, dir: -1 | 0 | 1): Paddle {
